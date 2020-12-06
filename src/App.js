@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
+  let pathArr = window.location.pathname.substr(1).split('/');
+  let port = pathArr[0];
+  pathArr.shift();
+  let path = pathArr.join('/');
+  if (port) {
+    window.location.replace("http://localhost:" + port + "/" + path + window.location.search)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/">
+            <div>Home Page</div>
+          </Route>
+            <Route path="/*">
+              <div>Redirecting to localhost</div>
+            </Route>
+          </Switch>
+      </div>
+    </Router>
   );
 }
 
