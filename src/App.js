@@ -17,11 +17,19 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/">
-            <div>Home Page</div>
+          <Route exact path="/">
+            <div style={{width: '80%', margin: 'auto', marginTop: 200}}>
+              <h1>Local Forward</h1>
+              <div>Working with an API that requires a callback URL? Local Forward gives you an https URL that redirects to localhost.</div>
+              <br />
+              <div>Usage: <code>https://localforward.dev/:port</code>. Everything after the port will be passed on to the redirect to localhost.</div>
+              <br />
+              <div>Example: <code>https://localforward.dev/3000/callback?test=true</code> redirects to <code>http://localhost:3000/callback?test=true</code></div>
+
+            </div>
           </Route>
             <Route path="/*">
-              <div>Redirecting to localhost</div>
+              <h2 style={{marginTop: 200}}>Redirecting to localhost</h2>
             </Route>
           </Switch>
       </div>
